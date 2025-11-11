@@ -401,7 +401,7 @@ if st.session_state["user"] is None:
             if row and verify_password(pwd, uname, row[0]):
                 st.session_state["user"] = {"username": uname, "role": row[1]}
                 log_action(conn, uname, "login", "Connexion réussie")
-               st.rerun()
+                st.rerun()
             else:
                 st.sidebar.error("Identifiants invalides")
     elif auth_tab == "S'inscrire":
