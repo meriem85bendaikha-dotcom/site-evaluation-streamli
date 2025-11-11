@@ -521,7 +521,7 @@ if sel_proj != "-- Nouveau projet --":
                 conn.commit()
                 log_action(conn, st.session_state["user"]["username"], "create_site", {"project_id": project_id, "site": site_name, "c1": reqs})
                 st.success("Site ajouté ✅")
-                st.experimental_rerun()
+                st.rerun()
 
     with tab2:
         st.header("Classement — visualisation améliorée")
