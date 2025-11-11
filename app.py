@@ -448,7 +448,7 @@ if sel_proj == "-- Nouveau projet --":
             cur.execute("INSERT INTO projects (name, created_at) VALUES (?, ?)", (name, datetime.now().isoformat()))
             conn.commit()
             log_action(conn, st.session_state["user"]["username"], "create_project", {"project_name": name})
-            st.experimental_rerun()
+            st.rerun()
 else:
     project_id = int(sel_proj.split(" - ")[0])
     project_name = sel_proj.split(" - ", 1)[1]
