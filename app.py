@@ -421,7 +421,7 @@ else:
     if st.sidebar.button("Se déconnecter"):
         log_action(conn, st.session_state['user']['username'], "logout", "Utilisateur déconnecté")
         st.session_state["user"] = None
-        st.experimental_rerun()
+        st.rerun()
 
 # -------- Sidebar : Projects --------
 st.sidebar.header("Projets")
@@ -462,8 +462,7 @@ else:
             conn.commit()
             log_action(conn, st.session_state["user"]["username"], "delete_project", {"project_id": project_id})
             st.success("Projet supprimé.")
-            st.experimental_rerun()
-
+            st.rerun()
 # Main area: project tabs
 if sel_proj != "-- Nouveau projet --":
     tab1, tab2, tab3, tab4 = st.tabs(["📥 Ajouter site", "📊 Classement & UI", "⚙️ Paramètres", "📝 Audit (historique)"])
@@ -588,7 +587,7 @@ if sel_proj != "-- Nouveau projet --":
                 conn.commit()
                 log_action(conn, st.session_state["user"]["username"], "update_engineers", eng_updates)
                 st.success("Disponibilités mises à jour.")
-                st.experimental_rerun()
+                st.rerun()
 
         st.subheader("Pondérations (normalisées)")
         w_df = pd.read_sql_query("SELECT * FROM weights", conn)
@@ -607,7 +606,7 @@ if sel_proj != "-- Nouveau projet --":
                 conn.commit()
                 log_action(conn, st.session_state["user"]["username"], "update_weights", w_updates)
                 st.success("Pondérations mises à jour.")
-                st.experimental_rerun()
+                st.rerun()
 
     with tab4:
         st.header("Audit trail (historique des actions)")
